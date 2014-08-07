@@ -8,29 +8,16 @@ import java.util.StringTokenizer;
  * Created by tushar.naik on 07/08/14.
  */
 public class NLPEngine {
-    String previousCommand;
-    String command;
-    List<String> associatedKeywords =new ArrayList<String>();
-    List<String> tokens;
-    StopWordRemover stopWordRemover = new StopWordRemover();
-    StringTokenizer stringTokenizer;
-    public NLPEngine()
+
+    Query query;
+    public NLPEngine(String entireQuery)
     {
-        command="";
-        previousCommand="";
+        query=new Query(entireQuery,null);
     }
 
     public void processCommand(String consoleInput) {
 
-        tokens = new ArrayList<String>();
-        command=consoleInput;
-        stringTokenizer=new StringTokenizer(consoleInput,",. ");
-        while(stringTokenizer.hasMoreTokens())
-        {
-            tokens.add(stringTokenizer.nextToken());
-        }
-        System.out.println("Tokenized form: "+tokens);
-        System.out.println("ok?");
+
 
 
         // lowercase it
