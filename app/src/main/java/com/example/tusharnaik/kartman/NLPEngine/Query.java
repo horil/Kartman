@@ -1,5 +1,6 @@
 package com.example.tusharnaik.kartman.NLPEngine;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,25 +11,31 @@ public class Query {
     public String fullQuery;
     public List<String> tokens;
     public List<String> keywords;
-    Query prevQuery;
+    Search search;
+    Browse browse;
+    public List<String> verbs;
+    public List<String> nonverbs;
 
-    Action action;
-    Object object;
-    public List<String> object;
+    int actionEnum;
 
     public Query(String fullQuery, Query prev)
     {
-        this.prevQuery=prev;
+        verbs=new ArrayList<String>();
+        nonverbs=new ArrayList<String>();
+
+
         this.fullQuery=fullQuery;
         tokens=Tokenizer.tokenizeString(fullQuery);
+        actionEnum=-1;
     }
-
     public void level3()
     {
         if(keywords.contains("compare"))
         {
-            action=
+
         }
     }
+
+
 
 }
