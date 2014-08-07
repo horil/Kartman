@@ -12,7 +12,8 @@ public class Query {
     public List<String> keywords;
     Query prevQuery;
 
-    public List<String> action;
+    Action action;
+    Object object;
     public List<String> object;
 
     public Query(String fullQuery, Query prev)
@@ -24,9 +25,9 @@ public class Query {
 
     public void level3()
     {
-        if(keywords.contains("com"))
+        if(keywords.contains("compare"))
         {
-
+            action=
         }
     }
 
