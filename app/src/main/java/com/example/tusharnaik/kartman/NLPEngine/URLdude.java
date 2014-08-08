@@ -16,7 +16,7 @@ import java.net.URL;
  */
 public class URLdude {
 
-    public static JsonObject fxn(String baseurl)
+    public static JsonObject convertUrlToJson(String baseurl)
     {
         URL url = null;
         try {
