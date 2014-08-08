@@ -1,5 +1,11 @@
 package com.example.tusharnaik.kartman.NLPEngine;
 
+import android.content.Intent;
+import android.net.Uri;
+
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -10,24 +16,19 @@ import java.util.StringTokenizer;
 public class NLPEngine {
 
     Query query;
-    public NLPEngine(String entireQuery)
-    {
-        query=new Query(entireQuery,null);
+    public NLPEngine(String entireQuery) throws IOException {
+        query=new Query(entireQuery);
     }
 
-    public void processCommand(String consoleInput) {
+    public String processCommand() throws JSONException
+    {
 
-
-
-
-        // lowercase it
-        // spell correction if required
-        // remove duplicates
-        // remove stop words
-        // realize keywords
-        // check if applicable
-        // perform action (search, select, buy etc etc)
-        // retrieve results.
+        query.verbise();
+        query.parseNonverbs();
+        query.setAction();
+        System.out.println();
+        String url=createURL.queryToURL(query);
+        return url;
 
     }
 }
