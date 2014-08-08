@@ -46,6 +46,7 @@ public class createURL {
             url = url.concat(n1);
             url = url.concat("+");
         }
+        url = url.substring(0,url.length()-1);
         url.concat(end);
         return url;
     }
