@@ -3,6 +3,7 @@ package com.example.tusharnaik.kartman.NLPEngine;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -103,19 +104,7 @@ public class Query {
 
         }
         System.out.println(nonverbs);
-/*
-        final ArrayList<String> titles = new ArrayList<String>();
 
-        for (Map.Entry<String,Integer> jsonElementEntry : docs.iterator()) {
-            String key = jsonElementEntry.getKey();
-            JsonObject element = (JsonObject) jsonElementEntry.;
-            JsonElement mainTitle = element.get("mainTitle");
-            if(mainTitle!=null)
-            {
-                String title = mainTitle.getAsString();
-                titles.add(title);
-            }
-        };*/
     }
     public String getPlusString(List<String> a)
     {
@@ -124,17 +113,32 @@ public class Query {
         {
             ret=ret+s+"+";
         }
-        return ret;
+        return ret.substring(0,ret.length()-1);
     }
 
     public void setAction()
     {
 
+        String BASE_URL1="http://sherlock-large-svc15.nm.flipkart.com:25280/sherlock/intent?q=";
+        String url;
+        url = BASE_URL1+getPlusString(nonverbs);
+        JsonObject jsonObject=URLdude.convertUrlToJson(url);
+        //JsonObject resp= (JsonObject) jsonObject.get("response");
+        JsonPrimitive docs=jsonObject.getAsJsonObject(":RESPONSE").getAsJsonObject("classification").getAsJsonPrimitive("queryType");
+        System.out.println(docs.getAsString());
+        if(docs.getAsString()=="product")
+         actionEnum=0;
+        else
+         actionEnum=1;
+
     }
     public static void main(String args[]) throws JSONException {
-        Query q=new Query("samung galaxy s5");
+        Query q=new Query("samsung galaxy s5");
         q.verbise();
         q.parseNonverbs();
+        q.setAction();
+
+        System.out.println(createURL.queryToURL(q));
     }
 
 
