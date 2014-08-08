@@ -23,7 +23,7 @@ public class createURL {
 
     public static String queryToURL(Query q)
     {
-        String url_begin = "http://w3-web1.nm.flipkart.com/dl/search?q=";
+        String url_begin = "http://w3-web4.nm.flipkart.com/dl/search?q=";
         String url_end = "&as=off&as-show=off&otracker=start";
         String resp = null;
         if(q.actionEnum == 0)
@@ -64,7 +64,7 @@ public class createURL {
     }
 
     private static String buildSearchURL(List<String> nonverbs, String begin, String end) {
-       String  indexer_begin = "http://sherlock-indexer1.nm.flipkart.com:25280/sherlock/stores/all/select?sort=relevance&products.start=0&contributors.start=0&products.count=120&contributors.count=120&q=";
+       String  indexer_begin = "http://w3-search-vip.nm.flipkart.com:25200/sherlock/stores/all/select?sort=relevance&products.start=0&contributors.start=0&products.count=120&contributors.count=120&q=";
 
        String indexer_end = "&enable-augment=true&enable-igor=true&disable-filter-count=true&enable-new-grouping=true&intent-ranking=true&bucket-ranking=true&enable-compatible-search=true&disable-mp3=true&auto-correct=1&context.internal=false";
 

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 public class StartScreen extends ActionBarActivity {
 
     protected static final int RESULT_SPEECH = 1;
-    Button bOkKartman;
+    ImageView bOkKartman;
     ImageView  sendButton;
     EditText etOkKartman;
     TextView tvOkKartman;
@@ -36,13 +37,13 @@ public class StartScreen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_screen);
         etOkKartman = (EditText) findViewById(R.id.editText1);
-        tvOkKartman = (TextView) findViewById(R.id.textView1);
-        sendButton= (ImageView) findViewById(R.id.button1);
+        tvOkKartman = (TextView) findViewById(R.id.textView2);
+        sendButton= (ImageView) findViewById(R.id.sendbutton1);
 
         etOkKartman.setText("");
         tvOkKartman.setText("");
         etOkKartman.setHint("Type text here or use the button");
-        bOkKartman=(Button)findViewById(R.id.button1);
+        bOkKartman=(ImageView)findViewById(R.id.button1);
         bOkKartman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,7 +128,7 @@ public class StartScreen extends ActionBarActivity {
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
                     tvOkKartman.setText(text.get(0));
-                    etOkKartman.setHint(text.get(0));
+                    etOkKartman.setText(text.get(0));
                 }
                 break;
             }
@@ -152,5 +153,15 @@ public class StartScreen extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 }

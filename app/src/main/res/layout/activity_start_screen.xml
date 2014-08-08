@@ -24,8 +24,8 @@
 
     <TextView
         android:text="a"
-        android:textSize="30dp"
-        android:textColor="#0000EE"
+        android:textSize="18dp"
+        android:textColor="#fff7fbff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
@@ -43,7 +43,7 @@
         android:layout_alignLeft="@+id/sendbutton1"
         android:layout_alignStart="@+id/sendbutton1" />
 
-    <ImageButton
+    <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="SUBMIT"

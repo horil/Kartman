@@ -1,5 +1,11 @@
 package com.example.tusharnaik.kartman.NLPEngine;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.sax.StartElementListener;
+
+import com.example.tusharnaik.kartman.StartScreen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -88,7 +94,7 @@ public class Query {
         url = BASE_URL1+getPlusString(nonverbs)+BASE_URL2;
         JsonObject jsonObject=URLdude.convertUrlToJson(url);
         //JsonObject resp= (JsonObject) jsonObject.get("response");
-        JsonArray docs=jsonObject.getAsJsonObject("response").getAsJsonArray("docs");
+         JsonArray docs=jsonObject.getAsJsonObject("response").getAsJsonArray("docs");
         System.out.println(docs);
         Iterator i = docs.iterator();
         while(i.hasNext())
@@ -116,7 +122,12 @@ public class Query {
             ret=ret+s+"+";
         }
 
-        return ret.substring(0,ret.length()-1);
+        if(ret.length()<=1)
+        {
+            return null;
+        }
+        return ret.substring(0, ret.length() - 1);
+
     }
 
     public void setAction()

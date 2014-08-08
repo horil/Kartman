@@ -15,7 +15,7 @@ public class Sample extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_start_screen);
         final EditText editText1;
         final TextView tv1=(TextView) findViewById(R.id.textView1);
         final TextView tv2=(TextView) findViewById(R.id.textView2);

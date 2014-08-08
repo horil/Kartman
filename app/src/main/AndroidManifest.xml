@@ -11,13 +11,13 @@
 
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".StartScreen">
+            android:name=".SplashScreen">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>j
         </activity>
         <activity
             android:name=".Sample"
@@ -29,7 +29,11 @@
         </activity>
         <activity
             android:name=".ResultScreen"
-           >
+            >
+        </activity>
+        <activity
+            android:name=".StartScreen"
+            >
         </activity>
     </application>
 
