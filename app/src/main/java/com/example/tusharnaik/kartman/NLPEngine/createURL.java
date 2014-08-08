@@ -44,6 +44,7 @@ public class createURL {
         for (String n1 : non_verbs) {
             n1 = n1.replaceAll("\"","");
             url = url.concat(n1);
+            url = url.concat("+");
         }
         url.concat(end);
         return url;
@@ -73,8 +74,8 @@ public class createURL {
 
         createURL c1 = new createURL();
         Query q = new Query("Samsung galaxy s4");
-        q.actionEnum = 0;
-        q.verbs = null;
+        q.actionEnum = 1;
+        q.verbs.add("show");
         q.nonverbs.add("samsung");
         q.nonverbs.add("galaxy");
         q.nonverbs.add("s4");
