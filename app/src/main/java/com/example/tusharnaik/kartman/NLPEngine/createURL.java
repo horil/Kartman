@@ -23,7 +23,7 @@ public class createURL {
 
     public static String queryToURL(Query q)
     {
-        String url_begin = "http://w3-web1.nm.flipkart.com/search?q=";
+        String url_begin = "http://w3-web1.nm.flipkart.com/dl/search?q=";
         String url_end = "&as=off&as-show=off&otracker=start";
         String resp = null;
         if(q.actionEnum == 0)
@@ -34,6 +34,18 @@ public class createURL {
         {
             resp = buildBrowseURL(q.nonverbs,url_begin,url_end);
         }
+        else if(q.nonverbs.contains("offers"))
+        {
+            if(q.nonverbs.contains("today"))
+            {
+                resp = "http://www.flipkart.com/offers/deal-of-the-day?&icmpid=foz_menu_dotd";
+            }
+            else if (q.nonverbs.contains("top"))
+            {
+                resp = "http://www.flipkart.com/offers?&icmpid=foz_menu_top";
+            }
+        }
+
         return resp;
     }
 
@@ -71,7 +83,7 @@ public class createURL {
         return resp;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
 
         createURL c1 = new createURL();
         Query q = new Query("Samsung galaxy s4");
