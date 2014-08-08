@@ -6,52 +6,65 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".StartScreen">
+    tools:context="com.example.tusharnaik.kartman.Sample"
 
-    <TextView
-        android:text="KARTMAN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="50dp"
-        android:id="@+id/textView" />
+    android:background="#cd1440ac">
 
     <EditText
         android:layout_width="match_parent"
-        android:textAlignment="center"
-        android:hint=""
         android:layout_height="wrap_content"
-        android:text="Hello"
+        android:hint="Type your query here"
         android:id="@+id/editText1"
-        android:layout_below="@+id/textView"
+        android:background="#37131313"
+        android:padding="10dp"
+
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OK KARTMAN"
-        android:id="@+id/button1"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="71dp" />
 
     <TextView
+        android:text="a"
+        android:textSize="30dp"
+        android:textColor="#0000EE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OK"
-        android:textSize="30dp"
-        android:layout_marginBottom="117dp"
-        android:layout_alignParentBottom="true"
         android:id="@+id/textView2"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/button1"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SEND"
-        android:id="@+id/button2"
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+
+        android:src="@drawable/flipkartlogo"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/sendbutton1"
+        android:layout_alignStart="@+id/sendbutton1" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="SUBMIT"
+        android:id="@+id/sendbutton1"
+        android:src="@drawable/search_icon"
+        android:background="#cd1440ac"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="59dp" />
+
+    <ImageView
+        android:layout_width="600dp"
+        android:layout_height="600dp"
+        android:paddingTop="-30dp"
+        android:id="@+id/button1"
+
+        android:src="@drawable/logo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView"
+        android:layout_above="@+id/editText1" />
 
 
 </RelativeLayout>
