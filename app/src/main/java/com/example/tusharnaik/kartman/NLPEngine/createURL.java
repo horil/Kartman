@@ -23,7 +23,7 @@ public class createURL {
 
     public static String queryToURL(Query q)
     {
-        String url_begin = "http://www.flipkart.com/search?q=";
+        String url_begin = "http://w3-web1.nm.flipkart.com/search?q=";
         String url_end = "&as=off&as-show=off&otracker=start";
         String resp = null;
         if(q.actionEnum == 0)
