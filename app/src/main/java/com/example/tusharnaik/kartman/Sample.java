@@ -10,14 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.tusharnaik.kartman.R;
-
 public class Sample extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sample);
+        setContentView(R.layout.activity_splash);
         final EditText editText1;
         final TextView tv1=(TextView) findViewById(R.id.textView1);
         final TextView tv2=(TextView) findViewById(R.id.textView2);

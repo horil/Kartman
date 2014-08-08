@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +26,8 @@ import java.util.ArrayList;
 public class StartScreen extends ActionBarActivity {
 
     protected static final int RESULT_SPEECH = 1;
-    Button bOkKartman, sendButton;
+    Button bOkKartman;
+    ImageView  sendButton;
     EditText etOkKartman;
     TextView tvOkKartman;
 
@@ -34,8 +36,8 @@ public class StartScreen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_screen);
         etOkKartman = (EditText) findViewById(R.id.editText1);
-        tvOkKartman = (TextView) findViewById(R.id.textView2);
-        sendButton= (Button) findViewById(R.id.button2);
+        tvOkKartman = (TextView) findViewById(R.id.textView1);
+        sendButton= (ImageView) findViewById(R.id.button1);
 
         etOkKartman.setText("");
         tvOkKartman.setText("");
@@ -58,6 +60,7 @@ public class StartScreen extends ActionBarActivity {
                 }
             }
         });
+
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
