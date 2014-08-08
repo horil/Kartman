@@ -2,6 +2,7 @@ package com.example.tusharnaik.kartman;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,6 +14,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tusharnaik.kartman.NLPEngine.NLPEngine;
+
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -57,11 +63,38 @@ public class StartScreen extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                if(tvOkKartman.getText().length()>0)
+                if(tvOkKartman.getText().length()>0 || etOkKartman.getText().length()>0)
                 {
-                    Intent sendIntent=new Intent(StartScreen.this, ResultScreen.class);
-                    sendIntent.putExtra("query",tvOkKartman.getText());
-                    startActivity(sendIntent);
+                    //Intent sendIntent=new Intent(StartScreen.this, ResultScreen.class);
+                    //sendIntent.putExtra("query",etOkKartman.getText().toString());
+                    //startActivity(sendIntent);
+
+                    final String searchQuery=etOkKartman.getText().toString();
+
+                    Thread th= new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            NLPEngine nlp= null;
+                            try {
+                                nlp = new NLPEngine(searchQuery);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            String url= null;
+                            try {
+                                url = nlp.processCommand();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            System.out.println(url);
+                            final Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url));
+                            startActivity(intent);
+                        }
+                    });
+                    th.start();
+
                 }
                 else
                 {
