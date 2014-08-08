@@ -23,4 +23,9 @@ public class Tokenizer {
         }
         return tokens;
     }
+
+    public static void main(String[] args) {
+
+        System.out.println(tokenizeString("samsung galaxy s5"));
+    }
 }

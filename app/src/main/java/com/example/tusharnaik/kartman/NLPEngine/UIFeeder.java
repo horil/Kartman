@@ -11,7 +11,7 @@ public class UIFeeder {
 
     public static void main(String args[]) throws IOException {
 
-        NLPEngine nlpEngine = new NLPEngine();
+        NLPEngine nlpEngine = new NLPEngine("Asd");
         StopWordRemover stopWordRemover = new StopWordRemover();
 
         System.out.println("FLIPKART KARTMAN ENGINE");
@@ -21,7 +21,7 @@ public class UIFeeder {
         do {
             System.out.print("OK KARTMAN, ");
             consoleInput=br.readLine();
-            nlpEngine.processCommand(consoleInput);
+            //nlpEngine.processCommand();
 
         }while(consoleInput!="q" && consoleInput!="quit" && consoleInput!="exit");
         System.out.println("THANK YOU. KARTMAN OUT.. PEACE");

@@ -33,18 +33,20 @@ public class Query {
     public List<String> nonverbs;
     public List<String> verbs;
 
+    StopWordRemover stopWordRemover;
     int actionEnum;
 
-    public Query(String fullQuery)
-    {
+    public Query(String fullQuery) throws IOException {
         verbs =new ArrayList<String>();
         nonverbs=new ArrayList<String>();
         verbsDict=new ArrayList<String>();
         keywords=Tokenizer.tokenizeString(fullQuery);
         fillVerbs();
         this.fullQuery=fullQuery;
-        tokens=Tokenizer.tokenizeString(fullQuery);
+        //tokens=Tokenizer.tokenizeString(fullQuery);
         actionEnum=-1;
+        stopWordRemover = new StopWordRemover();
+        keywords=stopWordRemover.removeWords(keywords);
     }
     public void fillVerbs()
     {
@@ -78,7 +80,7 @@ public class Query {
             }
         }
     }
-    public void parseNonverbs() throws JSONException {
+        public void parseNonverbs() throws JSONException {
         String BASE_URL1="http://sherlock-large-svc15.nm.flipkart.com:25280/solr/queries/select?fl=query,totalFrequency&q=query_lc:(";
         String BASE_URL2=")&sort=totalFrequency%20desc&wt=json";
 
@@ -113,6 +115,7 @@ public class Query {
         {
             ret=ret+s+"+";
         }
+
         return ret.substring(0,ret.length()-1);
     }
 
@@ -126,18 +129,18 @@ public class Query {
         //JsonObject resp= (JsonObject) jsonObject.get("response");
         JsonPrimitive docs=jsonObject.getAsJsonObject(":RESPONSE").getAsJsonObject("classification").getAsJsonPrimitive("queryType");
         System.out.println(docs.getAsString());
-        if(docs.getAsString()=="product")
+        if(docs.getAsString().equals("product"))
          actionEnum=0;
         else
          actionEnum=1;
 
+
     }
-    public static void main(String args[]) throws JSONException {
-        Query q=new Query("samsung galaxy s5");
+    public static void main(String args[]) throws JSONException, IOException {
+        Query q=new Query("samsung");
         q.verbise();
         q.parseNonverbs();
         q.setAction();
-
         System.out.println(createURL.queryToURL(q));
     }
 
